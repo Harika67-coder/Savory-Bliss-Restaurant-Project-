@@ -1,0 +1,1858 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pe-icon-7-stroke/css/pe-icon-7-stroke.min.css">
+
+    <style>
+* {
+    scroll-behavior: smooth;  /* Enables smooth scrolling */
+}
+
+
+        body {
+              margin:0;padding:0; 
+            padding-bottom: auto; overflow-x: hidden;  /* Horizontal scrolling prevent cheyyadam */
+            width: 100vw; font-family: 'Lora', serif;    }
+        header{
+         width:100%;
+         position:fixed;
+         box-shadow:2px 2px 10px grey;
+         padding:0% 2%;
+         background-color:white;
+         z-index:100;
+         top:0;
+         left:0;
+}
+        #menuBtn {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right:40px;
+        }
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(90deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #menuBtn:hover {
+            animation: spinner 2s ease-in;
+        }
+        #menuBtn img {
+            width: 100%;
+            height: auto;
+        }
+       .nav a,.desktop-nav a
+       {
+            text-decoration: none;
+            color:black;
+            cursor:pointer
+        }
+         .small-size{
+            display:flex;
+            justify-content:space-between;
+align-items:center;
+
+    }
+        .large-size{
+           display:none;}
+        
+        
+        li:hover {
+                color: #f36535;
+                transition: color 0.5s;
+            }
+
+        nav {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            background: white;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            padding: 1rem;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .nav.show {
+            display: flex;
+        }
+        .desktop-nav {
+            display: none;
+        }
+        .images{
+            padding:2%;
+            display:flex;
+            justify-content: space-between;
+            height:100%;
+            gap:2rem;
+        }
+        .images img{
+            width:140px;
+            height:100px;
+            object-fit:cover;
+           
+        }
+    
+        .slider-container {
+            position: relative;
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .arrow {
+            position:absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+            z-index:10;
+        }
+        .left { left: 0; }
+        .right { right: 0; }
+        .images-back{
+            background-color:black;
+            width:100%;
+            height:140px;
+            position: relative; 
+        }
+        .mid-section{
+            display:flex;
+            flex-direction:column;
+            align-items: center;
+            margin:10% 3%;
+            margin-bottom:4%;
+            text-align: center;
+        }
+        .two-buttons{
+            margin-top:20px;
+
+        }
+        .border{
+            
+            border:2px solid white;
+        }
+
+
+
+        .button-mid {
+    background-color: #f36535;
+    color: white;
+    padding: 20px 35px;
+    font-size: 16px;
+    border: none; /* Remove default border */
+    position: relative;
+    cursor:pointer;
+}
+.button-mid:hover{
+    border-color:red;
+    background-color: rgb(78, 201, 78);
+}
+.button-mid::before {
+    content: '';
+    position: absolute;
+    top: 5px;    /* Distance from the top */
+    left: 5px;   /* Distance from the left */
+    right: 5px;  /* Distance from the right */
+    bottom: 5px; /* Distance from the bottom */
+    border: 2px solid white; /* Inner border color and thickness */
+    pointer-events: none; /* Ensure it doesn't interfere with button clicks */
+}
+@keyframes bounceIn{
+    0%{
+        opacity:0;
+    }
+    25%{
+        opacity:1;
+        transform:scale(0.2);
+
+    }
+    50%{
+        opacity:1;
+        transform:scale(0.4);
+    }
+    75%{
+        opacity:1;
+        transform:scale(0.8);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1.05);
+    }
+}
+.about-bg h2{
+    animation:bounceIn 2s ease;
+}
+.desktop-nav.links{
+            display:none;}
+        
+.footer{
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items:center;
+    margin:3%;
+    height:400px;
+}
+.radios{
+    margin:2%;
+
+}
+/* Hide default radio button */
+input[type="radio"] {
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #f36535; /* Set border color to your preferred color */
+    
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Change color when radio button is selected */
+input[type="radio"]:checked {
+    background-color: #f36535; /* Set background color when selected */
+    border-color: #f36535; /* Border color when selected */
+}
+.vip{
+    background-color: black;
+    height:160px;
+    color:white;
+    padding:0 4%;
+}
+.subs-btn{
+    background-color: #e82305;
+    color:white;
+    font-size:20px;
+    border:none;
+    padding-right:30px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height:40px;
+    
+}
+.subscribe
+{
+    margin-left: 40px;
+    margin-top: 20px;
+    width:60%;
+    display:flex;
+    
+}
+.vip input[type="email"]
+{
+    padding:10px;
+    padding-right:50%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border:none;
+}
+input[type="submit"]
+{
+    margin:0 3%;
+    background-color: #f36535;
+    border:none;
+    color:white;
+}
+.last-pics{
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items:center;
+    margin:3%;
+    gap:1rem;
+}
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    display: block;
+    width: 100%;
+    height: 486;
+}
+
+.hover-text {
+    position: absolute;
+    bottom: 0; /* Ensures it stays inside the image */
+    left: 0;
+    width: 100%; /* Make it span the entire width */
+    text-align: center; /* Centers text */
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px 0;
+    font-size: 14px;
+    display: none;
+    font-size:24px; /* Initially hidden */
+}
+.image-container:hover .hover-text {
+    display: block;
+}
+.last-section{
+    padding:2%;
+    width:100%;
+    background-image: url("images/footer-bg.jpg");
+    height:auto;
+    font-family: 'Lora', serif;
+    text-align: center;
+    color:white;
+}
+.last-section p{
+    color:white;
+}
+.about-img{
+    background-image: url("images/bg3.jpg");
+    width:100%;
+    margin-top:100px;
+    height:200px;
+    background-size: cover;   
+    background-position: center; 
+    background-repeat: no-repeat;
+    margin-bottom:0;
+}
+.about-bg{
+    width:100%;
+    height:200px;
+    background-color: rgb(49, 49, 49);
+    opacity:0.8;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    font-size:24px;
+    font-weight: bold;
+}
+.bg-grey{
+    width:100%;
+    background-color: rgb(179, 178, 178);
+    height:auto;
+}
+.second-overlay{
+    padding:2%;
+    padding-top: 7%;
+    
+
+}
+.second-overlay img{
+    width:98%;
+}
+p{
+color:black;
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   margin:0;
+    margin-top:50px;
+}
+.order{
+    text-decoration: none;
+    background-color: #f36535;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block; /* Ensures it stays in one line */
+    white-space: nowrap;  
+margin-right:80px;
+/* Prevents text from wrapping */
+}
+.order:hover{
+    background-color:rgb(78, 201, 78);
+}
+
+.veg{
+    margin:0 8%;
+}
+
+.gallery-img div{
+    display: none;
+    
+}
+.gallery-img{
+    position: relative;
+}
+.gallery-img button {
+    border: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.nav a:hover,.desktop-nav a:hover{
+    color:#f36535;
+}
+.gallery-img img{
+    width:90%;
+}
+.last{
+    margin:0 3%;
+    display:flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+section#contact input{
+    padding:20px;
+}
+.bg-color-grey{
+    margin:0 3%;
+    width:90%;
+    height:100%;
+    background-color: rgb(130, 128, 128);
+    position:absolute;
+    top:0;
+    left:-24px;
+    opacity: 0.8;
+    
+}
+.gallery-img button img{
+    width:40px;
+    height:40px;
+    background: transparent;
+
+}
+header a{
+    font-weight: bold;
+}
+img,a,.subs-btn{
+    cursor:pointer;
+}
+.random-images img{
+    cursor:grab;
+}
+.two-buttons button a{
+    color:white;
+    text-decoration: none;
+}
+.access a{
+    color:white;
+}
+.access a:hover{
+  color:red;
+}
+.last-section a{
+    text-decoration: underline;
+}
+.two-layout{
+    animation: moveText 2s ease;
+}
+
+@keyframes moveText {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(5);
+    }
+}
+
+
+@media (min-width: 975px) {
+            .nav {
+                display: none !important;
+            } /* Ensures the span respects width and height */
+           .two-layout{
+            width:100%;
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            
+           }
+           .bg-grey{
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            height:auto;
+            
+           }
+           .second-overlay{
+            display:flex;
+            padding:3% 7%;
+            gap:2rem;
+            margin:0 auto;
+           }
+           .second-overlay img{
+            height:300px;
+           }
+           .last-pics{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+           }
+           .image-container img {
+    height:200px ;
+}
+
+.vertical {
+       border-left: 2px solid black;
+       height: 30px; /* Adjust height as needed */
+   }
+            .desktop-nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                position: static;
+                box-shadow: none;
+                background: transparent;
+                padding: 0;
+            }
+            .small-size{display:none;}
+            .large-size{
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                 
+          }
+            #menuBtn {
+                display: none;
+            }
+            
+            
+.vip{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.random-images img{
+    height:500px;
+}
+.gallery-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+}
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="small-size">
+            <img src="images/Savory Bliss.png" onclick="location.reload()" alt="Logo" width="100" height="100" class="start-img" style="object-fit: cover;">
+            <div>
+                <button id="menuBtn"><img src="images/photo.svg" alt="Menu"></button>
+                <nav class="nav">
+                    <a id="home" onclick="setActive('home')">HOME</a>
+                    <a id="about" onclick="setActive('about')">ABOUT US</a>
+                    <a id="menu" onclick="setActive('menu')">MENU</a>
+                    <a id="gallery" onclick="setActive('gallery')" >GALLERY</a>
+                    <a id="contact" onclick="setActive('contact')" >CONTACT US</a>
+                </nav>
+            </div></div>
+            <div class="large-size">
+           
+            <img src="images/Savory Bliss.png" alt="Logo" width="100" height="100">
+
+            <nav class="desktop-nav">
+                <a id="home" onclick="setActive('home')" rel="noreferrer">HOME</a>
+                <a id="about" onclick="setActive('about')" rel="noreferrer">ABOUT US</a>
+                <a id="menu" onclick="setActive('menu')" rel="noreferrer">MENU</a>
+                <a id="gallery" onclick="setActive('gallery')" rel="noreferrer">GALLERY</a>
+                <a id="contact" onclick="setActive('contact')" rel="noreferrer">CONTACT US</a>
+                <span class="vertical"></span>
+                <a href="#" target="_blank" rel="noreferrer"><img src="images/face.svg" alt="Facebook"></a>
+                <a href="#" target="_blank" rel="noreferrer"><img src="images/insta.svg" alt="Instagram"></a>
+                <a href="#" target="_blank" rel="noreferrer"><img src="images/yelp.svg" alt="Yelp"></a>
+             <a href="#" target="_blank" class="order" rel="noreferrer"
+             >Order Online</a>
+            </nav>
+</div>
+        </header>
+        <section id="home">
+            <div class="random-images">
+                <img src="images/foodbig1.jpeg" width="100%" height="300px" style="object-fit:cover;margin-top:100px;"/>
+            </div>
+            
+            <div class="images-back">
+                <div class="slider-container">
+                    <button class="arrow left" onclick="moveLeft()">&#10094;</button>
+                    <div class="images" id="imageSlider">
+                        <img src="images/foodbig1.jpeg" onclick="setImage2('foodbig1.jpeg')"/>
+                        <img src="images/foodbig2.jpeg" onclick="setImage2('foodbig2.jpeg')"/>
+                        <img src="images/foodbig3.jpeg" onclick="setImage2('foodbig3.jpeg')"/>
+                        <img src="images/foodbig4.jpeg" onclick="setImage2('foodbig4.jpeg')"/>
+                        <img src="images/foodbig5.jpeg" onclick="setImage2('foodbig5.jpeg')"/>
+                        <img src="images/foodbig6.jpeg" onclick="setImage2('foodbig6.jpeg')"/>
+                        <img src="images/foodbig7.jpeg" onclick="setImage2('foodbig7.jpeg')"/>
+                        <img src="images/foodbig8.jpeg" onclick="setImage2('foodbig8.jpeg')"/>
+                        <img src="images/foodbig9.jpeg" onclick="setImage2('foodbig9.jpeg')"/>
+                        <img src="images/foodbig10.jpeg" onclick="setImage2('foodbig10.jpeg')"/>
+                        <img src="images/foodbig11.jpeg" onclick="setImage2('foodbig11.jpeg')"/>
+                        <img src="images/foodbig12.jpeg" onclick="setImage2('foodbig12.jpeg')"/>
+                        <img src="images/foodbig13.jpeg" onclick="setImage2('foodbig13.jpeg')"/>
+                        <img src="images/foodbig14.jpeg" onclick="setImage2('foodbig14.jpeg')"/>
+                        <img src="images/foodbig15.jpeg" onclick="setImage2('foodbig15.jpeg')"/>
+                        <img src="images/foodbig16.jpeg" onclick="setImage2('foodbig16.jpeg')"/>
+                    </div>
+                    <button class="arrow right" onclick="moveRight()">&#10095;</button>
+                </div>
+            </div>
+            <div class="two-layout">
+            <div class="mid-section">
+               <span style="font-size: 80px;
+               line-height: 60px;
+               color: #e82305;
+               font-weight: bold;
+               font-family: 'Tangerine', cursive;">Welcome to</span>
+               <p style="font-size:xx-large;font-weight:bold;font-style: italic;letter-spacing: 7px;margin:0;color:black;">SAVORY BLISS</p>
+               <p style="margin:0;margin-top:10px;font-family: 'Lora', serif;line-height:24px;color:black">With a flavor bank of extensive Indian spices and wide range of Items to choose, you are unlikely to run out of options. A lot of care and responsibility has gone into making our Menu list.</p>
+               <p style="margin:0;font-family: 'Lora', serif;line-height:24px;color:black">Combat your boring days with interesting flavors assured to steal your heart away. Our food menu finds the balance between classics and progressive Indian cuisine. Make your every meal, an interesting experience</p>
+               <div class="two-buttons">
+                <button class="button-mid" onclick="setActive('about')">Our story</button>
+                <button class="button-mid"><a href="#" rel="noreferrer">Order Online</a></button>
+               </div>
+            </div>
+            <div class="footer">
+                <img src="images/lastpic1.jpg" width="100%" height="400px"/>
+                <div class="radios">
+                <input type="radio" onclick="setImage('lastpic1.jpg')" name="radio" checked/>
+                <input type="radio" onclick="setImage('lastpic2.jpg')" name="radio"/>
+            </div>
+            </div></div>
+            <div class="vip">
+                <div>
+                <p style="font-size:18px;margin:0;padding-top:20px;color:white;">Join Our</p>
+                <p style="font-size:26px;font-weight:bold;letter-spacing: 2px;margin:0;color:white">Savory Grills Vip Club</p></div>
+                <div class="subscribe">
+                <input type="email" name="email" placeholder="Email Address"/>
+                <button type="submit" class="subs-btn">SUBSCRIBE</button></div>
+            </div>
+            <div class="last-pics">
+                <div class="image-container">
+                    <img src="images/lastpic1.jpg" alt="Image 1">
+                    <span class="hover-text"  style="cursor: pointer;">Order Online</span>
+                </div>
+                
+                <div class="image-container">
+                    <img src="images/lastpic2.jpg" alt="Image 2">
+                    <span class="hover-text" onclick="setActive('menu')" style="cursor: pointer;">Full Menu</span>
+                </div>
+                <div class="image-container">
+                    <img src="images/lastpic3.jpg" alt="Image 3">
+                    <span class="hover-text" onclick="setActive('gallery')" style="cursor: pointer;">Gallery</span>
+                </div>
+                
+            </div>
+            <div class="last-section">
+                <div>
+                    <h3>ABOUT US</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p>With a flavor bank of extensive Indian spices and wide range of Items to choose, you are unlikely to run out of options. A lot of care and responsibility has gone into making our Menu list.</p>
+
+                </div>
+                <div>
+                    <h3>Opening Hours</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><span style="font-weight:bold">Monday </span> : Closed</p>
+                    <hr>
+                    <p><span style="font-weight:bold">Tue - Sun </span> : 11:30am - 2:45pm, 5:30pm - 9:30pm</p>
+                    <hr>
+                    
+                </div>
+                <div>
+                    <h3>CONTACT DETAILS</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><img src="images/location.svg" width="20" height="20" >151414 Darbar Road,<br>Chirala,9035</p>
+                    <p><img src="images/phone.svg" width="20" height="20" > 8353662277</p>
+                    <p><img src="images/mail.svg" width="20" height="20" style="margin:0;">savorybliss@gmail.com</p>
+                    <span style="border: 2px dashed white; display: block; width: 100%; margin: 10px 0;"></span>
+
+                </div>
+                <div class="access">
+                    <p>Copyright © 2024 Savory Bliss. All Rights Reserved.| <a onclick="setActive('access')" >Accessibility</a></p>
+                </div>
+            </div>
+        </section>
+        <section id="about">
+            <div class="about-img">
+                <div class="about-bg">
+                    <h2>ABOUT US</h2>
+                </div>
+            </div>
+            <div class="bg-grey">
+                <div class="second-overlay">
+                <img src="images/aboutimg1.jpg" width="100%" height="474"/>
+                <div>
+                    <p style="font-size:34px;font-weight:bold;margin:20px 0;letter-spacing: 4px;">Savory Bliss</p>
+                    <p style="line-height: 26px;">With a flavor bank of extensive Indian spices and wide range of Items to choose, you are unlikely to run out of options. A lot of care and responsibility has gone into making our Menu list.
+                        Combat your boring days with interesting flavors assured to steal your heart away. Our food menu finds the balance between classics and progressive Indian cuisine. Make your every meal, an interesting experience</p>
+                </div>
+            </div>
+            </div>
+            <div class="last-section">
+                <div>
+                    <h3>ABOUT US</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p>With a flavor bank of extensive Indian spices and wide range of Items to choose, you are unlikely to run out of options. A lot of care and responsibility has gone into making our Menu list.</p>
+
+                </div>
+                <div>
+                    <h3>Opening Hours</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><span style="font-weight:bold">Monday </span> : Closed</p>
+                    <hr>
+                    <p><span style="font-weight:bold">Tue - Sun </span> : 11:30am - 2:45pm, 5:30pm - 9:30pm</p>
+                    <hr>
+                    
+                </div>
+                <div>
+                    <h3>CONTACT DETAILS</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><img src="images/location.svg" width="20" height="20" >151414 Darbar Road,<br>Chirala,9035</p>
+                    <p><img src="images/phone.svg" width="20" height="20" > 8353662277</p>
+                    <p><img src="images/mail.svg" width="20" height="20" style="margin:0;">savorybliss@gmail.com</p>
+                    <span style="border: 2px dashed white; display: block; width: 100%; margin: 10px 0;"></span>
+
+                </div>
+                <div>
+                    <p>Copyright © 2024 Savory Bliss. All Rights Reserved.| <a href="#" style="color:white" onclick="setActive('access')" rel="noreferrer">Accessibility</a></p>
+                </div>
+            </div>
+        </section>
+        <section id="menu">
+            <div class="about-img">
+                <div class="about-bg">
+                    <h2>FULL MENU</h2>
+                </div>
+            </div>
+            <div class="menu-section">
+                <div class="btn">
+                    <a href="#" target="_blank" class="order" style="margin-right:0" rel="noreferrer">Order Online</a>
+                </div>
+                <div class="veg">
+                    <h2>Veg - Appetizer</h2>
+                    <span style="position:relative;"> 
+                        <hr >
+                        <span style="border: 2px solid orangered; display: inline-block; width: 44px; vertical-align: middle;position: absolute;top:-3px;left:0px"></span>
+                      </span>
+                      
+                </div>
+                <div class="veg">
+                    <div style="display: flex;flex-direction: column;">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                        <h3 style="margin: 0;color:black">Vegetable Samosa (2 Pcs)</h3>
+                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                        <span>$5.95</span>
+                        
+                    </div>
+                    <p>Deep fried crispy savory, stuffed with mixed vegetable and potatoes.</p>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                        <h3 style="margin: 0;color:black">Vegetable Pakora</h3>
+                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                        <span>$9.95</span>
+                        
+                    </div>
+                    <p>Sliced vegetables mixed in chick pea flour and fried.</p>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                        <h3 style="margin: 0;color:black">Paneer Pakora</h3>
+                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                        <span>$10.95</span>
+                        
+                    </div>
+                    <p>Cheese cubes mixed in chick pea flour batter & deep fried.</p>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                        <h3 style="margin: 0;color:black">Cut Mirchi</h3>
+                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                        <span>$8.95</span>
+                        
+                    </div>
+                    <p>Deep fried chilli bajji’s.</p>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                        <h3 style="margin: 0;color:black">Gobi Manchurian</h3>
+                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                        <span>$11.95</span>
+                        
+                    </div>
+                    <p>Cauliflower florets marrinated in house spices and deep fried.</p>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                        <h3 style="margin: 0;color:black">Veg-Manchurian</h3>
+                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                        <span>$12.95</span>
+                        
+                    </div>
+                    <p>Minced veg dumplings tossed with house spices and soy sauce.</p>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                        <h3 style="margin: 0;color:black">Chilli Paneer</h3>
+                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                        <span>$12.95</span>
+                        
+                    </div>
+                    <p>Cheese cubes marinated deep fried and tossed with house spices and chilli sauce.</p>
+                </div>
+                </div>
+                <div class="menu-section">
+                    
+                    <div class="veg">
+                        <h2>Tandoor Specials</h2>
+                        <span style="position:relative;"> 
+                            <hr >
+                            <span style="border: 2px solid orangered; display: inline-block; width: 44px; vertical-align: middle;position: absolute;top:-3px;left:0px"></span>
+                          </span>
+                          
+                    </div>
+                    <div class="veg">
+                        <div style="display: flex;flex-direction: column;">
+                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                            <h3 style="margin: 0;color:black">Chicken Lollypop</h3>
+                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                            <span>$15.95</span>
+                            
+                        </div>
+                        <p>Spiced chicken wings made into shape of lollypop and deep fried.</p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                            <h3 style="margin: 0;color:black">Chicken 65</h3>
+                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                            <span>$15.95</span>
+                            
+                        </div>
+                        <p>Boneless chicken cubes marinated in house spices and deep fried.</p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                            <h3 style="margin: 0;color:black">Chicken Pepper Fry</h3>
+                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                            <span>$10.95</span>
+                            
+                        </div>
+                        <p>Boneless chicken cubes marinated & tossed with house spices & grounded pepper.</p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                            <h3 style="margin: 0;color:black">Chicken Manchurian</h3>
+                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                            <span>$15.95</span>
+                            
+                        </div>
+                        <p>Boneless chicken cubes marinated and tossed with house spices and soy sauce.</p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                            <h3 style="margin: 0;color:black">Chilli Chicken</h3>
+                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                            <span>$15.95</span>
+                            
+                        </div>
+                        <p>Boneless chicken stir fry with onion and bell peppers.</p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                            <h3 style="margin: 0;color:black">Chicken Majestic</h3>
+                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                            <span>$15.95</span>
+                            
+                        </div>
+                        <p>Boneless chicken cubes marinated & tossed with cashew, cream and hot chilli sauce.</p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                            <h3 style="margin: 0;color:black">Apollo Fish</h3>
+                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                            <span>$15.95</span>
+                            
+                        </div>
+                        <p>Cubes of fish marinated with ground spices and tossed in special house sauce.</p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                            <h3 style="margin: 0;color:black">Malabar Fried Fish</h3>
+                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                            <span>$15.95</span>
+                            
+                        </div>
+                        <p>Fish fillets marinated in south Indian spices and deep fried.</p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                            <h3 style="margin: 0;color:black">Shrimp Chilli</h3>
+                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                            <span>$16.95</span>
+                            
+                        </div>
+                        <p>Spicy shrimp dish cooked with onions, bell peppers, cilantro in chilly sauce.</p>
+                    </div>
+                    </div>
+                    <div class="menu-section">
+                    
+                        <div class="veg">
+                            <h2>Veg - Curries</h2>
+                            <span style="position:relative;"> 
+                                <hr >
+                                <span style="border: 2px solid orangered; display: inline-block; width: 44px; vertical-align: middle;position: absolute;top:-3px;left:0px"></span>
+                              </span>
+                              
+                        </div>
+                        <div class="veg">
+                            <div style="display: flex;flex-direction: column;">
+                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                <h3 style="margin: 0;color:black">Chicken Lollypop</h3>
+                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                <span>$15.95</span>
+                                
+                            </div>
+                            <p>Spiced chicken wings made into shape of lollypop and deep fried.</p>
+                        </div>
+                        <div style="display: flex;flex-direction: column;">
+                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                <h3 style="margin: 0;color:black">Chicken 65</h3>
+                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                <span>$15.95</span>
+                                
+                            </div>
+                            <p>Boneless chicken cubes marinated in house spices and deep fried.</p>
+                        </div>
+                        <div style="display: flex;flex-direction: column;">
+                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                <h3 style="margin: 0;color:black">Chicken Pepper Fry</h3>
+                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                <span>$10.95</span>
+                                
+                            </div>
+                            <p>Boneless chicken cubes marinated & tossed with house spices & grounded pepper.</p>
+                        </div>
+                        <div style="display: flex;flex-direction: column;">
+                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                <h3 style="margin: 0;color:black">Chicken Manchurian</h3>
+                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                <span>$15.95</span>
+                                
+                            </div>
+                            <p>Boneless chicken cubes marinated and tossed with house spices and soy sauce.</p>
+                        </div>
+                        <div style="display: flex;flex-direction: column;">
+                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                <h3 style="margin: 0;color:black">Chilli Chicken</h3>
+                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                <span>$15.95</span>
+                                
+                            </div>
+                            <p>Boneless chicken stir fry with onion and bell peppers.</p>
+                        </div>
+                        <div style="display: flex;flex-direction: column;">
+                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                <h3 style="margin: 0;color:black">Chicken Majestic</h3>
+                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                <span>$15.95</span>
+                                
+                            </div>
+                            <p>Boneless chicken cubes marinated & tossed with cashew, cream and hot chilli sauce.</p>
+                        </div>
+                        <div style="display: flex;flex-direction: column;">
+                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                <h3 style="margin: 0;color:black">Apollo Fish</h3>
+                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                <span>$15.95</span>
+                                
+                            </div>
+                            <p>Cubes of fish marinated with ground spices and tossed in special house sauce.</p>
+                        </div>
+                        <div style="display: flex;flex-direction: column;">
+                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                <h3 style="margin: 0;color:black">Malabar Fried Fish</h3>
+                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                <span>$15.95</span>
+                                
+                            </div>
+                            <p>Fish fillets marinated in south Indian spices and deep fried.</p>
+                        </div>
+                        <div style="display: flex;flex-direction: column;">
+                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                <h3 style="margin: 0;color:black">Shrimp Chilli</h3>
+                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                <span>$16.95</span>
+                                
+                            </div>
+                            <p>Spicy shrimp dish cooked with onions, bell peppers, cilantro in chilly sauce.</p>
+                        </div>
+                        </div>
+                        <div class="menu-section">
+                    
+                            <div class="veg">
+                                <h2>Abhiruchi Grill Special</h2>
+                                <span style="position:relative;"> 
+                                    <hr >
+                                    <span style="border: 2px solid orangered; display: inline-block; width: 44px; vertical-align: middle;position: absolute;top:-3px;left:0px"></span>
+                                  </span>
+                                  
+                            </div>
+                            <div class="veg">
+                                <div style="display: flex;flex-direction: column;">
+                                <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                    <h3 style="margin: 0;color:black">Chicken Lollypop</h3>
+                                    <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                    <span>$15.95</span>
+                                    
+                                </div>
+                                <p>Spiced chicken wings made into shape of lollypop and deep fried.</p>
+                            </div>
+                            <div style="display: flex;flex-direction: column;">
+                                <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                    <h3 style="margin: 0;color:black">Chicken 65</h3>
+                                    <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                    <span>$15.95</span>
+                                    
+                                </div>
+                                <p>Boneless chicken cubes marinated in house spices and deep fried.</p>
+                            </div>
+                            <div style="display: flex;flex-direction: column;">
+                                <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                    <h3 style="margin: 0;color:black">Chicken Pepper Fry</h3>
+                                    <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                    <span>$10.95</span>
+                                    
+                                </div>
+                                <p>Boneless chicken cubes marinated & tossed with house spices & grounded pepper.</p>
+                            </div>
+                            <div style="display: flex;flex-direction: column;">
+                                <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                    <h3 style="margin: 0;color:black">Chicken Manchurian</h3>
+                                    <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                    <span>$15.95</span>
+                                    
+                                </div>
+                                <p>Boneless chicken cubes marinated and tossed with house spices and soy sauce.</p>
+                            </div>
+                            <div style="display: flex;flex-direction: column;">
+                                <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                    <h3 style="margin: 0;color:black">Chilli Chicken</h3>
+                                    <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                    <span>$15.95</span>
+                                    
+                                </div>
+                                <p>Boneless chicken stir fry with onion and bell peppers.</p>
+                            </div>
+                            <div style="display: flex;flex-direction: column;">
+                                <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                    <h3 style="margin: 0;color:black">Chicken Majestic</h3>
+                                    <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                    <span>$15.95</span>
+                                    
+                                </div>
+                                <p>Boneless chicken cubes marinated & tossed with cashew, cream and hot chilli sauce.</p>
+                            </div>
+                            <div style="display: flex;flex-direction: column;">
+                                <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                    <h3 style="margin: 0;color:black">Apollo Fish</h3>
+                                    <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                    <span>$15.95</span>
+                                    
+                                </div>
+                                <p>Cubes of fish marinated with ground spices and tossed in special house sauce.</p>
+                            </div>
+                            <div style="display: flex;flex-direction: column;">
+                                <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                    <h3 style="margin: 0;color:black">Malabar Fried Fish</h3>
+                                    <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                    <span>$15.95</span>
+                                    
+                                </div>
+                                <p>Fish fillets marinated in south Indian spices and deep fried.</p>
+                            </div>
+                            <div style="display: flex;flex-direction: column;">
+                                <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                    <h3 style="margin: 0;color:black">Shrimp Chilli</h3>
+                                    <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                    <span>$16.95</span>
+                                    
+                                </div>
+                                <p>Spicy shrimp dish cooked with onions, bell peppers, cilantro in chilly sauce.</p>
+                            </div>
+                            </div>
+                            <div class="menu-section">
+                    
+                                <div class="veg">
+                                    <h2>Non Veg - Appetizer</h2>
+                                    <span style="position:relative;"> 
+                                        <hr >
+                                        <span style="border: 2px solid orangered; display: inline-block; width: 44px; vertical-align: middle;position: absolute;top:-3px;left:0px"></span>
+                                      </span>
+                                      
+                                </div>
+                                <div class="veg">
+                                    <div style="display: flex;flex-direction: column;">
+                                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                        <h3 style="margin: 0;color:black">Chicken Lollypop</h3>
+                                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                        <span>$15.95</span>
+                                        
+                                    </div>
+                                    <p>Spiced chicken wings made into shape of lollypop and deep fried.</p>
+                                </div>
+                                <div style="display: flex;flex-direction: column;">
+                                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                        <h3 style="margin: 0;color:black">Chicken 65</h3>
+                                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                        <span>$15.95</span>
+                                        
+                                    </div>
+                                    <p>Boneless chicken cubes marinated in house spices and deep fried.</p>
+                                </div>
+                                <div style="display: flex;flex-direction: column;">
+                                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                        <h3 style="margin: 0;color:black">Chicken Pepper Fry</h3>
+                                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                        <span>$10.95</span>
+                                        
+                                    </div>
+                                    <p>Boneless chicken cubes marinated & tossed with house spices & grounded pepper.</p>
+                                </div>
+                                <div style="display: flex;flex-direction: column;">
+                                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                        <h3 style="margin: 0;color:black">Chicken Manchurian</h3>
+                                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                        <span>$15.95</span>
+                                        
+                                    </div>
+                                    <p>Boneless chicken cubes marinated and tossed with house spices and soy sauce.</p>
+                                </div>
+                                <div style="display: flex;flex-direction: column;">
+                                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                        <h3 style="margin: 0;color:black">Chilli Chicken</h3>
+                                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                        <span>$15.95</span>
+                                        
+                                    </div>
+                                    <p>Boneless chicken stir fry with onion and bell peppers.</p>
+                                </div>
+                                <div style="display: flex;flex-direction: column;">
+                                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                        <h3 style="margin: 0;color:black">Chicken Majestic</h3>
+                                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                        <span>$15.95</span>
+                                        
+                                    </div>
+                                    <p>Boneless chicken cubes marinated & tossed with cashew, cream and hot chilli sauce.</p>
+                                </div>
+                                <div style="display: flex;flex-direction: column;">
+                                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                        <h3 style="margin: 0;color:black">Apollo Fish</h3>
+                                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                        <span>$15.95</span>
+                                        
+                                    </div>
+                                    <p>Cubes of fish marinated with ground spices and tossed in special house sauce.</p>
+                                </div>
+                                <div style="display: flex;flex-direction: column;">
+                                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                        <h3 style="margin: 0;color:black">Malabar Fried Fish</h3>
+                                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                        <span>$15.95</span>
+                                        
+                                    </div>
+                                    <p>Fish fillets marinated in south Indian spices and deep fried.</p>
+                                </div>
+                                <div style="display: flex;flex-direction: column;">
+                                    <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                        <h3 style="margin: 0;color:black">Shrimp Chilli</h3>
+                                        <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                        <span>$16.95</span>
+                                        
+                                    </div>
+                                    <p>Spicy shrimp dish cooked with onions, bell peppers, cilantro in chilly sauce.</p>
+                                </div>
+                                </div>
+                                <div class="menu-section">
+                    
+                                    <div class="veg">
+                                        <h2>Beverages</h2>
+                                        <span style="position:relative;"> 
+                                            <hr >
+                                            <span style="border: 2px solid orangered; display: inline-block; width: 44px; vertical-align: middle;position: absolute;top:-3px;left:0px"></span>
+                                          </span>
+                                          
+                                    </div>
+                                    <div class="veg">
+                                        <div style="display: flex;flex-direction: column;">
+                                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                            <h3 style="margin: 0;color:black">Chicken Lollypop</h3>
+                                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                            <span>$15.95</span>
+                                            
+                                        </div>
+                                        <p>Spiced chicken wings made into shape of lollypop and deep fried.</p>
+                                    </div>
+                                    <div style="display: flex;flex-direction: column;">
+                                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                            <h3 style="margin: 0;color:black">Chicken 65</h3>
+                                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                            <span>$15.95</span>
+                                            
+                                        </div>
+                                        <p>Boneless chicken cubes marinated in house spices and deep fried.</p>
+                                    </div>
+                                    <div style="display: flex;flex-direction: column;">
+                                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                            <h3 style="margin: 0;color:black">Chicken Pepper Fry</h3>
+                                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                            <span>$10.95</span>
+                                            
+                                        </div>
+                                        <p>Boneless chicken cubes marinated & tossed with house spices & grounded pepper.</p>
+                                    </div>
+                                    <div style="display: flex;flex-direction: column;">
+                                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                            <h3 style="margin: 0;color:black">Chicken Manchurian</h3>
+                                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                            <span>$15.95</span>
+                                            
+                                        </div>
+                                        <p>Boneless chicken cubes marinated and tossed with house spices and soy sauce.</p>
+                                    </div>
+                                    <div style="display: flex;flex-direction: column;">
+                                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                            <h3 style="margin: 0;color:black">Chilli Chicken</h3>
+                                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                            <span>$15.95</span>
+                                            
+                                        </div>
+                                        <p>Boneless chicken stir fry with onion and bell peppers.</p>
+                                    </div>
+                                    <div style="display: flex;flex-direction: column;">
+                                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                            <h3 style="margin: 0;color:black">Chicken Majestic</h3>
+                                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                            <span>$15.95</span>
+                                            
+                                        </div>
+                                        <p>Boneless chicken cubes marinated & tossed with cashew, cream and hot chilli sauce.</p>
+                                    </div>
+                                    <div style="display: flex;flex-direction: column;">
+                                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                            <h3 style="margin: 0;color:black">Apollo Fish</h3>
+                                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                            <span>$15.95</span>
+                                            
+                                        </div>
+                                        <p>Cubes of fish marinated with ground spices and tossed in special house sauce.</p>
+                                    </div>
+                                    <div style="display: flex;flex-direction: column;">
+                                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                            <h3 style="margin: 0;color:black">Malabar Fried Fish</h3>
+                                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                            <span>$15.95</span>
+                                            
+                                        </div>
+                                        <p>Fish fillets marinated in south Indian spices and deep fried.</p>
+                                    </div>
+                                    <div style="display: flex;flex-direction: column;">
+                                        <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                            <h3 style="margin: 0;color:black">Shrimp Chilli</h3>
+                                            <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                            <span>$16.95</span>
+                                            
+                                        </div>
+                                        <p>Spicy shrimp dish cooked with onions, bell peppers, cilantro in chilly sauce.</p>
+                                    </div>
+                                    </div>
+                                    <div class="menu-section">
+                    
+                                        <div class="veg">
+                                            <h2>Non Veg - Appetizer</h2>
+                                            <span style="position:relative;"> 
+                                                <hr >
+                                                <span style="border: 2px solid orangered; display: inline-block; width: 44px; vertical-align: middle;position: absolute;top:-3px;left:0px"></span>
+                                              </span>
+                                              
+                                        </div>
+                                        <div class="veg">
+                                            <div style="display: flex;flex-direction: column;">
+                                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                                <h3 style="margin: 0;color:black">Chicken Lollypop</h3>
+                                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                                <span>$15.95</span>
+                                                
+                                            </div>
+                                            <p>Spiced chicken wings made into shape of lollypop and deep fried.</p>
+                                        </div>
+                                        <div style="display: flex;flex-direction: column;">
+                                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                                <h3 style="margin: 0;color:black">Chicken 65</h3>
+                                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                                <span>$15.95</span>
+                                                
+                                            </div>
+                                            <p>Boneless chicken cubes marinated in house spices and deep fried.</p>
+                                        </div>
+                                        <div style="display: flex;flex-direction: column;">
+                                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                                <h3 style="margin: 0;color:black">Chicken Pepper Fry</h3>
+                                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                                <span>$10.95</span>
+                                                
+                                            </div>
+                                            <p>Boneless chicken cubes marinated & tossed with house spices & grounded pepper.</p>
+                                        </div>
+                                        <div style="display: flex;flex-direction: column;">
+                                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                                <h3 style="margin: 0;color:black">Chicken Manchurian</h3>
+                                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                                <span>$15.95</span>
+                                                
+                                            </div>
+                                            <p>Boneless chicken cubes marinated and tossed with house spices and soy sauce.</p>
+                                        </div>
+                                        <div style="display: flex;flex-direction: column;">
+                                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                                <h3 style="margin: 0;color:black">Chilli Chicken</h3>
+                                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                                <span>$15.95</span>
+                                                
+                                            </div>
+                                            <p>Boneless chicken stir fry with onion and bell peppers.</p>
+                                        </div>
+                                        <div style="display: flex;flex-direction: column;">
+                                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                                <h3 style="margin: 0;color:black">Chicken Majestic</h3>
+                                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                                <span>$15.95</span>
+                                                
+                                            </div>
+                                            <p>Boneless chicken cubes marinated & tossed with cashew, cream and hot chilli sauce.</p>
+                                        </div>
+                                        <div style="display: flex;flex-direction: column;">
+                                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                                <h3 style="margin: 0;color:black">Apollo Fish</h3>
+                                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                                <span>$15.95</span>
+                                                
+                                            </div>
+                                            <p>Cubes of fish marinated with ground spices and tossed in special house sauce.</p>
+                                        </div>
+                                        <div style="display: flex;flex-direction: column;">
+                                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                                <h3 style="margin: 0;color:black">Malabar Fried Fish</h3>
+                                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                                <span>$15.95</span>
+                                                
+                                            </div>
+                                            <p>Fish fillets marinated in south Indian spices and deep fried.</p>
+                                        </div>
+                                        <div style="display: flex;flex-direction: column;">
+                                            <div style="position: relative; display: flex; align-items: center; justify-content: space-between;gap:2rem">
+                                                <h3 style="margin: 0;color:black">Shrimp Chilli</h3>
+                                                <span style="border: 2px dotted orangered; display: inline-block; height: 0;width:40%; margin-left: 10px;"></span>
+                                                <span>$16.95</span>
+                                                
+                                            </div>
+                                            <p>Spicy shrimp dish cooked with onions, bell peppers, cilantro in chilly sauce.</p>
+                                        </div>
+                                        </div>
+                
+            </div>
+            <div class="last-section">
+                <div>
+                    <h3>ABOUT US</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p>With a flavor bank of extensive Indian spices and wide range of Items to choose, you are unlikely to run out of options. A lot of care and responsibility has gone into making our Menu list.</p>
+
+                </div>
+                <div>
+                    <h3>Opening Hours</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><span style="font-weight:bold">Monday </span> : Closed</p>
+                    <hr>
+                    <p><span style="font-weight:bold">Tue - Sun </span> : 11:30am - 2:45pm, 5:30pm - 9:30pm</p>
+                    <hr>
+                    
+                </div>
+                <div>
+                    <h3>CONTACT DETAILS</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><img src="images/location.svg" width="20" height="20" >151414 Darbar Road,<br>Chirala,9035</p>
+                    <p><img src="images/phone.svg" width="20" height="20" > 8353662277</p>
+                    <p><img src="images/mail.svg" width="20" height="20" style="margin:0;">savorybliss@gmail.com</p>
+                    <span style="border: 2px dashed white; display: block; width: 100%; margin: 10px 0;"></span>
+
+                </div>
+                <div>
+                    <p>Copyright © 2024 Savory Bliss. All Rights Reserved.| <a href="#" style="color:white" onclick="setActive('access')" rel="noreferrer">Accessibility</a></p>
+                </div>
+            </div>
+        </section>
+        <section id="gallery">
+            <div class="about-img">
+                <div class="about-bg">
+                    <h2>GALLERY</h2>
+                </div>
+            </div>
+            <div style="margin:3%">
+              <div class="gallery-section">
+                
+                <div class="gallery-img" id="img1" onmouseover="mouseOvered('img1-overlay')" onmouseout="mouseOut('img1-overlay')">
+                    <img src="images/gallery1.jpg"/>
+                    <div id="img1-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery1.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img2" onmouseover="mouseOvered('img2-overlay')" onmouseout="mouseOut('img2-overlay')">
+                    <img src="images/gallery2.jpg"/>
+                    <div id="img2-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery2.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img3" onmouseover="mouseOvered('img3-overlay')" onmouseout="mouseOut('img3-overlay')">
+                    <img src="images/gallery3.jpg"/>
+                    <div id="img3-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery3.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img4" onmouseover="mouseOvered('img4-overlay')" onmouseout="mouseOut('img4-overlay')">
+                    <img src="images/gallery4.jpg"/>
+                    <div id="img4-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery4.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img5" onmouseover="mouseOvered('img5-overlay')" onmouseout="mouseOut('img5-overlay')">
+                    <img src="images/gallery5.jpg"/>
+                    <div id="img5-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery5.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img6" onmouseover="mouseOvered('img6-overlay')" onmouseout="mouseOut('img6-overlay')">
+                    <img src="images/gallery6.jpg"/>
+                    <div id="img6-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery6.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img7" onmouseover="mouseOvered('img7-overlay')" onmouseout="mouseOut('img7-overlay')">
+                    <img src="images/gallery7.jpg"/>
+                    <div id="img7-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery7.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img8" onmouseover="mouseOvered('img8-overlay')" onmouseout="mouseOut('img8-overlay')">
+                    <img src="images/gallery8.jpg"/>
+                    <div id="img8-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery8.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img9" onmouseover="mouseOvered('img9-overlay')" onmouseout="mouseOut('img9-overlay')">
+                    <img src="images/gallery9.jpg"/>
+                    <div id="img9-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery9.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img10" onmouseover="mouseOvered('img10-overlay')" onmouseout="mouseOut('img10-overlay')">
+                    <img src="images/gallery10.jpg"/>
+                    <div id="img10-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery10.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img11" onmouseover="mouseOvered('img11-overlay')" onmouseout="mouseOut('img11-overlay')">
+                    <img src="images/gallery11.jpg"/>
+                    <div id="img11-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery11.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img12" onmouseover="mouseOvered('img12-overlay')" onmouseout="mouseOut('img12-overlay')">
+                    <img src="images/gallery12.jpg"/>
+                    <div id="img12-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery12.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img13" onmouseover="mouseOvered('img13-overlay')" onmouseout="mouseOut('img13-overlay')">
+                    <img src="images/gallery13.jpg"/>
+                    <div id="img13-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery13.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img14" onmouseover="mouseOvered('img14-overlay')" onmouseout="mouseOut('img14-overlay')">
+                    <img src="images/gallery14.jpg"/>
+                    <div id="img14-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery14.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img15" onmouseover="mouseOvered('img15-overlay')" onmouseout="mouseOut('img15-overlay')">
+                    <img src="images/gallery15.jpg"/>
+                    <div id="img15-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery15.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-img" id="img16" onmouseover="mouseOvered('img16-overlay')" onmouseout="mouseOut('img16-overlay')">
+                    <img src="images/gallery16.jpg"/>
+                    <div id="img16-overlay">
+                        <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <button style="cursor:pointer"><img src="images/arrow.svg" onclick="showImage('gallery16.jpg')"/></button>
+                            <div class="bg-grey-big" id="bg-img1"></div>
+                        </div>
+                    </div>
+                </div>
+                        
+                    </div>
+            </div>
+            
+            <div class="last-section">
+                <div>
+                    <h3>ABOUT US</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p>With a flavor bank of extensive Indian spices and wide range of Items to choose, you are unlikely to run out of options. A lot of care and responsibility has gone into making our Menu list.</p>
+
+                </div>
+                <div>
+                    <h3>Opening Hours</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><span style="font-weight:bold">Monday </span> : Closed</p>
+                    <hr>
+                    <p><span style="font-weight:bold">Tue - Sun </span> : 11:30am - 2:45pm, 5:30pm - 9:30pm</p>
+                    <hr>
+                    
+                </div>
+                <div>
+                    <h3>CONTACT DETAILS</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><img src="images/location.svg" width="20" height="20" >151414 Darbar Road,<br>Chirala,9035</p>
+                    <p><img src="images/phone.svg" width="20" height="20" > 8353662277</p>
+                    <p><img src="images/mail.svg" width="20" height="20" style="margin:0;">savorybliss@gmail.com</p>
+                    <span style="border: 2px dashed white; display: block; width: 100%; margin: 10px 0;"></span>
+
+                </div>
+                <div>
+                    <p>Copyright © 2024 Savory Bliss. All Rights Reserved.| <a href="#" style="color:white" onclick="setActive('access')" rel="noreferrer">Accessibility</a></p>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="about-img">
+                <div class="about-bg">
+                    <h2>CONTACT US</h2>
+                </div>
+            </div>
+            <div class="last">
+                <p>LEAVE US A MESSAGE</p>
+                <input type="text" placeholder="Full Name*"/><br>
+                <input type="email" placeholder="Email Address*"/><br>
+                <input type="tel" maxlength="10" pattern="\d{10}"><br>
+                <textarea placeholder="Your Message..."></textarea><br>
+                
+            </div>
+            <input type="submit" value="Submit"/>
+        </section>
+        <section id="access">
+            <div class="about-img">
+                <div class="about-bg">
+                    <h2>ACCESSIBILITY</h2>
+                </div>
+            </div>
+            <div style="width:100%;background-color: rgb(220, 218, 218)">
+            <div style="color:white;padding:5%;height:auto;">
+                <p style="margin-top:0;line-height: 28px;color:rgb(130, 129, 129)">Abhiruchi Grill is committed to making its website usable by all people by meeting or exceeding the requirements of the Web Content Accessibility Guidelines 2.1 Level AA (WCAG 2.1 AA). We are actively working to increase the accessibility and usability of our website, and in doing so seek to adhere to these standards and guidelines to the greatest extent possible.</p>
+
+                <p style="line-height: 28px;color:rgb(130, 129, 129)">Please be aware that our efforts are ongoing as our current website provider implements the relevant improvements to meet WCAG 2.1 AA guidelines over time. If you need assistance in using the processes found within this site, or have specific questions or concerns about the accessibility of this site, please contact us.</p>
+
+                <p style="margin-bottom:0;line-height:28px;color:rgb(130, 129, 129)">If you do encounter an accessibility issue, please be sure to specify the webpage and we will make all reasonable efforts to make that page accessible.</p>
+            </div></div>
+            <div class="last-section">
+                <div>
+                    <h3>ABOUT US</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p>With a flavor bank of extensive Indian spices and wide range of Items to choose, you are unlikely to run out of options. A lot of care and responsibility has gone into making our Menu list.</p>
+
+                </div>
+                <div>
+                    <h3>Opening Hours</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><span style="font-weight:bold">Monday </span> : Closed</p>
+                    <hr>
+                    <p><span style="font-weight:bold">Tue - Sun </span> : 11:30am - 2:45pm, 5:30pm - 9:30pm</p>
+                    <hr>
+                    
+                </div>
+                <div>
+                    <h3>CONTACT DETAILS</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><img src="images/location.svg" width="20" height="20" >151414 Darbar Road,<br>Chirala,9035</p>
+                    <p><img src="images/phone.svg" width="20" height="20" > 8353662277</p>
+                    <p><img src="images/mail.svg" width="20" height="20" style="margin:0;">savorybliss@gmail.com</p>
+                    <span style="border: 2px dashed white; display: block; width: 100%; margin: 10px 0;"></span>
+
+                </div>
+                <div>
+                    <p>Copyright © 2024 Savory Bliss. All Rights Reserved.| <a href="#" style="color:white" onclick="setActive('access')" rel="noreferrer">Accessibility</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        const navbar = document.querySelector('.nav');
+        const button = document.getElementById('menuBtn');button.addEventListener('click', () => {
+        navbar.classList.toggle("show");
+    });
+    const image=document.querySelector(".random-images img");
+    
+    setInterval(()=>{
+        const randNum=Math.floor(Math.random()*16+1);
+        image.setAttribute('src',`images/foodbig${randNum}.jpeg`);
+    image.setAttribute('alt','No image');
+    },3000)
+    
+    
+    function setActive(item) {
+        document.querySelectorAll(".nav a,.desktop-nav a").forEach(ele => ele.style.color = '');
+        
+        document.querySelectorAll(`#${item}`).forEach(ele=>ele.style.color = '#f36535');
+        document.querySelectorAll("section").forEach(ele=>ele.style.display='none');
+
+        document.querySelector(`section#${item}`).style.display='block';
+
+        console.log(document.querySelector(`section#${item}`))
+    }
+    let index = 0;
+        const images = document.getElementById("imageSlider");
+        const totalImages = images.children.length;
+        const visibleImages = 5;
+        
+        function moveLeft() {
+            if (index > 0) {
+                index--;
+                images.style.transform = `translateX(-${index * 150}px)`;
+            }
+            else{
+                index=totalImages-1;
+            }
+        }
+        
+        function moveRight() {
+            if (index < totalImages - visibleImages) {
+                index++;
+                images.style.transform = `translateX(-${index * 150}px)`;
+            }
+            else{
+                index=0;
+            }
+        }
+        function setImage(image)
+        {
+        const image2=document.querySelector('.footer img');
+        if(image2.getAttribute('src')===image)
+        {
+            return ;
+        }
+        else{
+            image2.setAttribute('src',image);
+        }
+        }
+        function setImage2(image)
+        {
+        const image2=document.querySelector('.random-images img');
+        if(image2.getAttribute('src')===image)
+        {
+            return ;
+        }
+        else{
+            image2.setAttribute('src',`images/${image}`);
+        }
+        }
+        function mouseOvered(id) {
+            document.getElementById(id).classList.add('bg-color-grey');
+            document.getElementById(id).style.display = 'block';
+        }
+        function mouseOut(id) {
+            document.getElementById(id).classList.remove('bg-color-grey');
+            document.getElementById(id).style.display = 'none';
+        }
+        let currentImageIndex = 0; // Track current image index
+const galleryImages = ["images/gallery1.jpg", "images/gallery2.jpg", "images/gallery3.jpg","images/gallery4.jpg","images/gallery5.jpg","images/gallery6.jpg","images/gallery7.jpg","images/gallery8.jpg","images/gallery9.jpg","images/gallery10.jpg","images/gallery11.jpg","images/gallery12.jpg","images/gallery13.jpg","images/gallery14.jpg","images/gallery15.jpg","images/gallery16.jpg"]; // Add all images
+
+function showImage(imageSrc) {
+    currentImageIndex = galleryImages.indexOf(imageSrc); // Find image index
+
+    let mainElement = document.querySelector(`#${imageSrc}.bg-grey-big`);
+
+    if (!mainElement) {
+        mainElement = document.createElement('div');
+        mainElement.classList.add('bg-grey-big');
+        document.body.appendChild(mainElement);
+    }
+
+    mainElement.style.cssText = `
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    `;
+
+    // Create image element
+    let imgElement = document.createElement('img');
+    imgElement.src = imageSrc;
+    imgElement.style.cssText = `
+        max-width: 90%;
+        max-height: 90%;
+        border: 5px solid white;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    `;
+
+    // Create left arrow
+    let leftArrow = document.createElement('button');
+    leftArrow.innerHTML = "&#9664;"; // Left arrow symbol (◀)
+    leftArrow.style.cssText = arrowStyle();
+    leftArrow.style.left = "10%";
+    leftArrow.onclick = () => navigateImage(-1);
+
+    // Create right arrow
+    let rightArrow = document.createElement('button');
+    rightArrow.innerHTML = "&#9654;"; // Right arrow symbol (▶)
+    rightArrow.style.cssText = arrowStyle();
+    rightArrow.style.right = "10%";
+    rightArrow.onclick = () => navigateImage(1);
+    let closeBtn=document.createElement('button');
+    closeBtn.innerHTML='X';
+    closeBtn.style.cssText = `
+    position: absolute;
+    font-size: 30px;
+    border: none;
+    background: transparent;
+    top: 10px; /* Adjusted to be at the top of the image */
+    right: 10px; /* Positioned at the top-right of the image */
+    cursor: pointer;
+    color: white;
+    z-index: 10000; /* Ensure it stays on top */
+`;
+
+    closeBtn.onclick = () => {
+    mainElement.remove(); // Removes the overlay
+};
+    mainElement.innerHTML = "";
+    mainElement.appendChild(leftArrow);
+    mainElement.appendChild(imgElement);
+    mainElement.appendChild(rightArrow);
+    mainElement.appendChild(closeBtn);
+
+    // Close overlay when clicking outside the image
+    mainElement.addEventListener('click', (e) => {
+        if (e.target === mainElement) {
+            mainElement.remove();
+        }
+    });
+    leftArrow.addEventListener('click', (e) => e.stopPropagation());
+rightArrow.addEventListener('click', (e) => e.stopPropagation());
+}
+
+// Function to style navigation arrows
+function arrowStyle() {
+    return `
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 40px;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        border: 2px solid white;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    `;
+}
+
+// Function to navigate between images
+function navigateImage(direction) {
+    currentImageIndex += direction;
+    
+    if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1; // Loop to last image
+    if (currentImageIndex >= galleryImages.length) currentImageIndex = 0; // Loop to first image
+
+    showImage(galleryImages[currentImageIndex]); // Show new image
+}
+
+
+        window.addEventListener('load',setActive('home'));
+
+</script>
+
+</body>
+</html>
