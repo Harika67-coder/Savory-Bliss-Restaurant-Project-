@@ -1611,6 +1611,35 @@ img,a,.subs-btn{
                 
             </div>
             <input type="submit" value="Submit"/>
+            <div class="last-section">
+                <div>
+                    <h3>ABOUT US</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p>With a flavor bank of extensive Indian spices and wide range of Items to choose, you are unlikely to run out of options. A lot of care and responsibility has gone into making our Menu list.</p>
+
+                </div>
+                <div>
+                    <h3>Opening Hours</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><span style="font-weight:bold">Monday </span> : Closed</p>
+                    <hr>
+                    <p><span style="font-weight:bold">Tue - Sun </span> : 11:30am - 2:45pm, 5:30pm - 9:30pm</p>
+                    <hr>
+                    
+                </div>
+                <div>
+                    <h3>CONTACT DETAILS</h3>
+                    <div style="width: 45px; height: 3px; background-color: white; margin-top: 5px;margin:0 auto;"></div>
+                    <p><img src="images/location.svg" width="20" height="20" >151414 Darbar Road,<br>Chirala,9035</p>
+                    <p><img src="images/phone.svg" width="20" height="20" > 8353662277</p>
+                    <p><img src="images/mail.svg" width="20" height="20" style="margin:0;">savorybliss@gmail.com</p>
+                    <span style="border: 2px dashed white; display: block; width: 100%; margin: 10px 0;"></span>
+
+                </div>
+                <div>
+                    <p>Copyright © 2024 Savory Bliss. All Rights Reserved.| <a href="#" style="color:white" onclick="setActive('access')" rel="noreferrer">Accessibility</a></p>
+                </div>
+            </div>
         </section>
         <section id="access">
             <div class="about-img">
@@ -1737,12 +1766,19 @@ img,a,.subs-btn{
             document.getElementById(id).style.display = 'none';
         }
         let currentImageIndex = 0; // Track current image index
-const galleryImages = ["images/gallery1.jpg", "images/gallery2.jpg", "images/gallery3.jpg","images/gallery4.jpg","images/gallery5.jpg","images/gallery6.jpg","images/gallery7.jpg","images/gallery8.jpg","images/gallery9.jpg","images/gallery10.jpg","images/gallery11.jpg","images/gallery12.jpg","images/gallery13.jpg","images/gallery14.jpg","images/gallery15.jpg","images/gallery16.jpg"]; // Add all images
+const galleryImages = [
+    "gallery1.jpg", "gallery2.jpg", "gallery3.jpg", "gallery4.jpg",
+    "gallery5.jpg", "gallery6.jpg", "gallery7.jpg", "gallery8.jpg",
+    "gallery9.jpg", "gallery10.jpg", "gallery11.jpg", "gallery12.jpg",
+    "gallery13.jpg", "gallery14.jpg", "gallery15.jpg", "gallery16.jpg"
+]; // Add all images
 
 function showImage(imageSrc) {
     currentImageIndex = galleryImages.indexOf(imageSrc); // Find image index
 
-    let mainElement = document.querySelector(`#${imageSrc}.bg-grey-big`);
+    // Generate safe ID using replace to avoid invalid characters for ID
+    const safeImageSrc = imageSrc.replace(/\//g, '_').replace(/\./g, '_');
+    let mainElement = document.querySelector(`#${safeImageSrc}.bg-grey-big`);
 
     if (!mainElement) {
         mainElement = document.createElement('div');
@@ -1765,7 +1801,7 @@ function showImage(imageSrc) {
 
     // Create image element
     let imgElement = document.createElement('img');
-    imgElement.src = imageSrc;
+    imgElement.src = `images/${imageSrc}`; // Use the correct source for the image
     imgElement.style.cssText = `
         max-width: 90%;
         max-height: 90%;
@@ -1786,24 +1822,26 @@ function showImage(imageSrc) {
     rightArrow.style.cssText = arrowStyle();
     rightArrow.style.right = "10%";
     rightArrow.onclick = () => navigateImage(1);
-    let closeBtn=document.createElement('button');
-    closeBtn.innerHTML='X';
-    closeBtn.style.cssText = `
-    position: absolute;
-    font-size: 30px;
-    border: none;
-    background: transparent;
-    top: 10px; /* Adjusted to be at the top of the image */
-    right: 10px; /* Positioned at the top-right of the image */
-    cursor: pointer;
-    color: white;
-    z-index: 10000; /* Ensure it stays on top */
-`;
 
+    // Create close button
+    let closeBtn = document.createElement('button');
+    closeBtn.innerHTML = 'X';
+    closeBtn.style.cssText = `
+        position: absolute;
+        font-size: 30px;
+        border: none;
+        background: transparent;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        color: white;
+        z-index: 10000;
+    `;
     closeBtn.onclick = () => {
-    mainElement.remove(); // Removes the overlay
-};
-    mainElement.innerHTML = "";
+        mainElement.remove(); // Removes the overlay
+    };
+
+    mainElement.innerHTML = ""; // Clear existing content
     mainElement.appendChild(leftArrow);
     mainElement.appendChild(imgElement);
     mainElement.appendChild(rightArrow);
@@ -1815,8 +1853,10 @@ function showImage(imageSrc) {
             mainElement.remove();
         }
     });
+
+    // Prevent event propagation for the arrows
     leftArrow.addEventListener('click', (e) => e.stopPropagation());
-rightArrow.addEventListener('click', (e) => e.stopPropagation());
+    rightArrow.addEventListener('click', (e) => e.stopPropagation());
 }
 
 // Function to style navigation arrows
@@ -1842,7 +1882,7 @@ function arrowStyle() {
 // Function to navigate between images
 function navigateImage(direction) {
     currentImageIndex += direction;
-    
+
     if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1; // Loop to last image
     if (currentImageIndex >= galleryImages.length) currentImageIndex = 0; // Loop to first image
 
